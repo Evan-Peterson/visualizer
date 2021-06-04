@@ -12,11 +12,16 @@ function setup() {
 
 // Continually looping function that draws things to the canvas
 function draw() {
+    var x = 0;
+    var y = 0;
     for(var i = 0;i < grid.length;i+= 10) {
         for(var j = 0;j < grid[0].length;j+= 10) {
             fill(51);
-            rect(i, j, 8, 8);
+            rect(x, y, 8, 8);
+            x += 10;
         }
+
+        y += 10;
     }
 }
   
