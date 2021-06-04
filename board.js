@@ -1,10 +1,8 @@
-
-
 function board() {
 
     this.w = 8;
-    this.columns = width/this.w;
-    this.rows = height/this.w;
+    this.columns = Math.round(width/this.w);
+    this.rows = Math.round(height/this.w);
 
     this.board = new Array(this.columns);
     for(var i = 0;i < this.columns;i++) {
@@ -18,6 +16,15 @@ function board() {
             }
         }
 
-    }
+    };
+    this.init();
+
+    this.display = function() {
+        for(var i = 0;i < this.columns;i++) {
+            for(var j = 0;j < this.rows;j++) {
+                this.board[i][j].display();
+            }
+        }
+    };
 
 }
