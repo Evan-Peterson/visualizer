@@ -12,6 +12,8 @@ function Node(x, y, w, isGoal) {
     // True if the node is the goal node or not
     this.isGoal = false;
 
+    // Draws a rectangle at the nodes x y position and 
+    // colors it according to whether it is the target or not
     this.display = function() {
         if(this.isGoal) {
             fill(66, 245, 138)
@@ -22,6 +24,7 @@ function Node(x, y, w, isGoal) {
         rect(this.x, this.y, this.w,this.w);
     };
 
+    // Getters and setter of isGoal
     this.isTarget = function() {
         return isGoal;
     };

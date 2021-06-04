@@ -9,6 +9,9 @@ function board() {
         this.board[i] = new Array(this.rows);
     }
 
+    console.log("length: " + this.board.length);
+    console.log("[0].length: " + this.board[0].length);
+
     this.init = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -32,4 +35,15 @@ function board() {
         }
     };
 
+    this.getNode = function(row, col) {
+        return this.board[col][row];
+    };
+
+    this.getCols = function() {
+        return this.board.length;
+    };
+
+    this.getRows = function() {
+        return this.board[0].length;
+    };
 }
