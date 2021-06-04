@@ -13,7 +13,12 @@ function Node(x, y, w, isGoal) {
     this.isGoal = false;
 
     this.display = function() {
-        fill(51);
+        if(this.isGoal) {
+            fill(66, 245, 138)
+        } else {
+            fill(51);
+        }
+        
         rect(this.x, this.y, this.w,this.w);
     };
 

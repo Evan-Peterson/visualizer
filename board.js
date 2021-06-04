@@ -16,6 +16,11 @@ function board() {
             }
         }
 
+        var randCol = Math.round(Math.random() * this.columns);
+        var randRow = Math.round(Math.random() * this.rows);
+
+        this.board[randCol][randRow].setGoal(true);
+
     };
     this.init();
 
