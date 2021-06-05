@@ -4,6 +4,8 @@ function board() {
     this.columns = Math.round(width/this.w);
     this.rows = Math.round(height/this.w);
 
+    this.start;
+
     this.board = new Array(this.columns);
     for(var i = 0;i < this.columns;i++) {
         this.board[i] = new Array(this.rows);
@@ -20,8 +22,14 @@ function board() {
         var randCol = Math.round(Math.random() * this.columns);
         var randRow = Math.round(Math.random() * this.rows);
 
-        this.board[randCol][randRow].setGoal(true);
+        var randColStart = Math.round(Math.random() * this.columns);
+        var randRowStart = Math.round(Math.random() * this.row);
 
+        this.board[10][10].setGoal(true);
+        console.log(this.board[10][10]);
+
+        this.board[randCol][randRow].setGoal(true);
+        // this.board[randColStart][randRowStart].set
     };
     this.init();
 

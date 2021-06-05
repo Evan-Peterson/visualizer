@@ -14,7 +14,8 @@ function setup() {
 
     board = new board();
 
-    board.init();
+
+    // console.log(board.getNode(10,10).isTarget());
 
     bfs = new bfs(board);
 }
