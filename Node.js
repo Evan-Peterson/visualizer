@@ -1,6 +1,6 @@
 
 
-function Node(x, y, w, isGoal) {
+function Node(x, y, w, isGoal, visited) {
 
     // x and y coordinates for the node
     this.x = x;
@@ -11,6 +11,8 @@ function Node(x, y, w, isGoal) {
 
     // True if the node is the goal node or not
     this.isGoal = false;
+
+    this.visited = false;
 
     // Draws a rectangle at the nodes x y position and 
     // colors it according to whether it is the target or not
@@ -31,5 +33,13 @@ function Node(x, y, w, isGoal) {
 
     this.setGoal = function(isGoal) {
         this.isGoal = isGoal;
+    };
+
+    this.isVisited = function() {
+        return this.visited;
+    };
+
+    this.setVisited = function(visited) {
+        this.visited = visited;
     };
 }
