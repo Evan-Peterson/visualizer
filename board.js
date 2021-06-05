@@ -9,8 +9,6 @@ function board() {
         this.board[i] = new Array(this.rows);
     }
 
-    console.log("length: " + this.board.length);
-    console.log("[0].length: " + this.board[0].length);
 
     this.init = function() {
         for(var i = 0;i < this.columns;i++) {
