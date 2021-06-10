@@ -6,6 +6,9 @@ function Node(x, y, w, isGoal, visited) {
     this.x = x;
     this.y = y;
 
+    // True if the node has been visited, false if not
+    this.visited = visited;
+
     // Color data for the node, defaults to grey
     this.r = 51;
     this.g = 51;
@@ -26,11 +29,6 @@ function Node(x, y, w, isGoal, visited) {
     // Draws a rectangle at the nodes x y position and 
     // colors it according to whether it is the target or not
     this.display = function() {
-        // if(this.isGoal) {
-        //     fill(66, 245, 138)
-        // } else {
-        //     fill(51);
-        // }
 
         fill(this.r, this.g, this.b);
         
@@ -39,8 +37,6 @@ function Node(x, y, w, isGoal, visited) {
 
     // Getters and setter of isGoal
     this.isTarget = function() {
-        console.log("in isTarget");
-        console.log("isGoal: " + isGoal);
         return isGoal;
     };
 

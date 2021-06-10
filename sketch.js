@@ -14,6 +14,10 @@ function setup() {
 
     board = new board();
 
+    var randColStart = Math.round(Math.random() * board.getCols());
+    var randRowStart = Math.round(Math.random() * board.getRows());
+
+    board.getNode(randColStart, randRowStart).setColor(255, 255, 255);
 
     // console.log(board.getNode(10,10).isTarget());
 

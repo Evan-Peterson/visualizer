@@ -22,10 +22,10 @@ function board() {
         var randCol = Math.round(Math.random() * this.columns);
         var randRow = Math.round(Math.random() * this.rows);
 
-        var randColStart = Math.round(Math.random() * this.columns);
-        var randRowStart = Math.round(Math.random() * this.row);
+        // var randColStart = Math.round(Math.random() * this.columns);
+        // var randRowStart = Math.round(Math.random() * this.row);
 
-        this.board[1][0].setGoal(true);
+        // this.board[randColStart][randRowStart].setGoal(true);
         // console.log(this.board[10][10]);
 
         this.board[randCol][randRow].setGoal(true);
