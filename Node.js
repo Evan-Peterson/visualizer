@@ -54,7 +54,7 @@ function Node(x, y, w, isGoal, visited) {
 
     this.setVisited = function(visited) {
         this.visited = visited;
-        if(!start) {
+        if(!this.start) {
             this.setColor(105, 157, 240);
         }
         
@@ -74,4 +74,12 @@ function Node(x, y, w, isGoal, visited) {
         this.g = g;
         this.b = b;
     };
+
+    // this.getNeighbors = function() {
+    //     var neighbors = [];
+
+    //     neighbors.push()
+
+    //     return neighbors;
+    // };
 }

@@ -1,6 +1,4 @@
 
-
-
 var board;
 var bfs;
 
@@ -18,10 +16,19 @@ function setup() {
     var randColStart = Math.round(Math.random() * board.getCols());
     var randRowStart = Math.round(Math.random() * board.getRows());
 
+
     // Set color of start to white
     board.getNode(randColStart, randRowStart).setStart();
 
+    var startNeighbors = board.getNeighbors(randColStart, randRowStart);
+
+    for(var i = 0;i < startNeighbors.length;i++) {
+        startNeighbors[i].setVisited(true);
+    }
+
     bfs = new bfs(board, randColStart, randRowStart);
+
+    bfs.find();
 }
 
 // Continually looping function that draws things to the canvas

@@ -23,6 +23,12 @@ function board() {
         var randRow = Math.round(Math.random() * this.rows);
 
         this.board[randCol][randRow].setGoal(true);
+
+        // this.board[10][10].setGoal(true);
+        // this.board[11][10].setStart();
+        // this.board[9][10].setStart();
+        // this.board[10][11].setStart();
+        // this.board[10][9].setStart();
     };
     this.init();
 
@@ -35,6 +41,11 @@ function board() {
     };
 
     this.getNode = function(row, col) {
+
+        if(row > this.getRows() || col > this.getCols()) {
+            return -1;
+        }
+
         return this.board[col][row];
     };
 
@@ -44,5 +55,16 @@ function board() {
 
     this.getRows = function() {
         return this.board[0].length;
+    };
+
+    this.getNeighbors = function(x, y) {
+        var neighbors = [];
+
+        neighbors.push(this.getNode(x - 1, y));
+        neighbors.push(this.getNode(x + 1, y));
+        neighbors.push(this.getNode(x, y - 1));
+        neighbors.push(this.getNode(x, y + 1));
+
+        return neighbors;
     };
 }
