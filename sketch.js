@@ -14,12 +14,12 @@ function setup() {
 
     board = new board();
 
+    // Generate random row and column for start node
     var randColStart = Math.round(Math.random() * board.getCols());
     var randRowStart = Math.round(Math.random() * board.getRows());
 
+    // Set color of start to white
     board.getNode(randColStart, randRowStart).setColor(255, 255, 255);
-
-    // console.log(board.getNode(10,10).isTarget());
 
     bfs = new bfs(board);
 }
