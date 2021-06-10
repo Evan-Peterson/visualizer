@@ -14,6 +14,9 @@ function Node(x, y, w, isGoal, visited) {
     this.g = 51;
     this.b = 51;
 
+    // True if the node is the start or not
+    this.start = false;
+
     if(isGoal) {
         this.setColor(66, 245, 138);
     }
@@ -51,7 +54,19 @@ function Node(x, y, w, isGoal, visited) {
 
     this.setVisited = function(visited) {
         this.visited = visited;
-        this.setColor(105, 157, 240);
+        if(!start) {
+            this.setColor(105, 157, 240);
+        }
+        
+    };
+
+    this.isStart = function() {
+        return this.start;
+    };
+
+    this.setStart = function() {
+        this.start = true;
+        this.setColor(255, 255, 255);
     };
 
     this.setColor = function(r, g, b) {

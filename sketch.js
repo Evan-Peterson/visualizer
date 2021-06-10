@@ -19,9 +19,9 @@ function setup() {
     var randRowStart = Math.round(Math.random() * board.getRows());
 
     // Set color of start to white
-    board.getNode(randColStart, randRowStart).setColor(255, 255, 255);
+    board.getNode(randColStart, randRowStart).setStart();
 
-    bfs = new bfs(board);
+    bfs = new bfs(board, randColStart, randRowStart);
 }
 
 // Continually looping function that draws things to the canvas
