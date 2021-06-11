@@ -1,11 +1,13 @@
 
 
-function Node(x, y, w, isGoal, visited) {
+function Node(x, y, w, isGoal, visited, row, col) {
 
     // x and y coordinates for the node
     this.x = x;
     this.y = y;
 
+    this.row = row;
+    this.col = col;
     // True if the node has been visited, false if not
     this.visited = visited;
 
@@ -40,7 +42,7 @@ function Node(x, y, w, isGoal, visited) {
 
     // Getters and setter of isGoal
     this.isTarget = function() {
-        return isGoal;
+        return this.isGoal;
     };
 
     this.setGoal = function(isGoal) {
@@ -54,7 +56,7 @@ function Node(x, y, w, isGoal, visited) {
 
     this.setVisited = function(visited) {
         this.visited = visited;
-        if(!this.start) {
+        if(!this.start && !this.isGoal) {
             this.setColor(105, 157, 240);
         }
         
@@ -75,11 +77,11 @@ function Node(x, y, w, isGoal, visited) {
         this.b = b;
     };
 
-    // this.getNeighbors = function() {
-    //     var neighbors = [];
+    this.getRow = function() {
+        return this.row;
+    };
 
-    //     neighbors.push()
-
-    //     return neighbors;
-    // };
+    this.getCol = function() {
+        return this.col;
+    };
 }
