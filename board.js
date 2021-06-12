@@ -1,17 +1,23 @@
 function board() {
 
+    // Width of the cells
     this.w = 8;
+
+    // Amount of columns and rows based on width/height and width of cell
     this.columns = Math.round(width/this.w);
     this.rows = Math.round(height/this.w);
 
     this.start;
 
+    // Creates 2D array with columns as the outer array
+    // This mimics x y coordinate plane
     this.board = new Array(this.columns);
     for(var i = 0;i < this.columns;i++) {
         this.board[i] = new Array(this.rows);
     }
 
-
+    // Initializes each cell of the board to a new Node object
+    // Also randomly selects a row and col for the goal
     this.init = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -26,6 +32,7 @@ function board() {
     };
     this.init();
 
+    // Displays the nodes in the board to the screen
     this.display = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -34,6 +41,8 @@ function board() {
         }
     };
 
+    // Returns the node at the col row given
+    // Returns -1 if the given col row is out of bounds
     this.getNode = function(col, row) {
 
         if(row >= this.getRows() || col >= this.getCols() || row < 0 || col < 0) {
@@ -43,14 +52,19 @@ function board() {
         return this.board[col][row];
     };
 
+    // Returns number of columns
     this.getCols = function() {
         return this.board.length;
     };
 
+    // Returns number of rows
     this.getRows = function() {
         return this.board[0].length;
     };
 
+
+    // Returns an array of cells directly adjacent to the given x and y
+    // If the given x and y is at an edge, then it returns only the neighbors that exist
     this.getNeighbors = function(x, y) {
         var neighbors = [];
 

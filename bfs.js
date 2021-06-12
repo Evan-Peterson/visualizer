@@ -1,6 +1,7 @@
 
 function bfs(board, startCol, startRow) {
 
+    // Starting point row and column
     this.startCol = startCol;
     this.startRow = startRow;
 
@@ -8,6 +9,8 @@ function bfs(board, startCol, startRow) {
 
     };
 
+
+    /// Uses Breadth First Search to find the goal
     this.find = function() {
         
         // Create a "queue" 

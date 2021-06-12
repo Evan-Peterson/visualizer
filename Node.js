@@ -19,6 +19,7 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // True if the node is the start or not
     this.start = false;
 
+    // If the node is a goal, set the color to green
     if(isGoal) {
         this.setColor(66, 245, 138);
     }
@@ -45,15 +46,19 @@ function Node(x, y, w, isGoal, visited, row, col) {
         return this.isGoal;
     };
 
+    // Sets the node isGoal to the given value
     this.setGoal = function(isGoal) {
         this.isGoal = isGoal;
         this.setColor(66, 245, 138);
     };
 
+    // Returns true if visited, false otherwise
     this.isVisited = function() {
         return this.visited;
     };
 
+    // Setter for visited instance variable
+    // Sets the color to blue if it is not the start and not the goal
     this.setVisited = function(visited) {
         this.visited = visited;
         if(!this.start && !this.isGoal) {
@@ -62,25 +67,31 @@ function Node(x, y, w, isGoal, visited, row, col) {
         
     };
 
+    // Returns true if it is the start
     this.isStart = function() {
         return this.start;
     };
 
+    // Sets this node to the start
+    // Changes the color to white
     this.setStart = function() {
         this.start = true;
         this.setColor(255, 255, 255);
     };
 
+    // Sets the color of this node with the given rgb values
     this.setColor = function(r, g, b) {
         this.r = r;
         this.g = g;
         this.b = b;
     };
 
+    // Returns this node's row in the board
     this.getRow = function() {
         return this.row;
     };
 
+    // Returns this node's col in the board
     this.getCol = function() {
         return this.col;
     };
