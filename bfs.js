@@ -33,7 +33,7 @@ function bfs(board, startCol, startRow) {
                 return v;
             }
 
-            var neighbors = board.getNeighbors(v.getRow(), v.getCol());
+            var neighbors = board.getNeighbors(v.getCol(), v.getRow());
 
             // console.log(v.getX() + ", " + v.getY());
             // console.log(neighbors);

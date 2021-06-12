@@ -36,7 +36,7 @@ function setup() {
 
     
 
-    // bfs.find();
+    bfs.find();
 }
 
 // Continually looping function that draws things to the canvas
