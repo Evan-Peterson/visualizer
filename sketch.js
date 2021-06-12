@@ -16,21 +16,8 @@ function setup() {
     var randColStart = Math.round(Math.random() * (board.getCols() - 1));
     var randRowStart = Math.round(Math.random() * (board.getRows() - 1));
 
-    console.log("randColStart: " + randColStart);
-    console.log("randRowStart: " + randRowStart);
-
-    console.log(board.getNode(randColStart, randRowStart))
-
     // Set color of start to white
     board.getNode(randColStart, randRowStart).setStart();
-
-
-
-    // var startNeighbors = board.getNeighbors(randColStart, randRowStart);
-
-    // for(var i = 0;i < startNeighbors.length;i++) {
-    //     startNeighbors[i].setVisited(true);
-    // }
 
     bfs = new bfs(board, randColStart, randRowStart);
 

@@ -23,15 +23,6 @@ function board() {
         var randRow = Math.round(Math.random() * this.rows);
 
         this.board[randCol][randRow].setGoal(true);
-
-        // this.board[10][10].setGoal(true); // Middle
-        // this.board[11][10].setVisited();  // East
-        // this.board[9][10].setVisited();   // West
-        // this.board[10][11].setVisited();  // South
-        // this.board[10][9].setVisited();   // North
-
-        console.log("cols: " + this.columns);
-        console.log("rows: " + this.rows);
     };
     this.init();
 

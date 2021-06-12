@@ -4,13 +4,6 @@ function bfs(board, startCol, startRow) {
     this.startCol = startCol;
     this.startRow = startRow;
 
-    // for(var i = 0;i < board.getRows();i++) {
-    //     if(!board.getNode(i,0).isTarget()) {
-    //         board.getNode(i,0).setVisited(true);
-    //     }
-        
-    // }
-
     this.step = function() {
 
     };
@@ -34,9 +27,6 @@ function bfs(board, startCol, startRow) {
             }
 
             var neighbors = board.getNeighbors(v.getCol(), v.getRow());
-
-            // console.log(v.getX() + ", " + v.getY());
-            // console.log(neighbors);
 
             for(var i = 0;i < neighbors.length;i++) {
                 if(!neighbors[i].isVisited()) {
