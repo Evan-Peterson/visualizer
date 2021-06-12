@@ -13,11 +13,18 @@ function setup() {
     board = new board();
 
     // Generate random row and column for start node
-    var randColStart = Math.round(Math.random() * board.getCols());
-    var randRowStart = Math.round(Math.random() * board.getRows());
+    var randColStart = Math.round(Math.random() * (board.getCols() - 1));
+    var randRowStart = Math.round(Math.random() * (board.getRows() - 1));
+
+    console.log("randColStart: " + randColStart);
+    console.log("randRowStart: " + randRowStart);
+
+    console.log(board.getNode(randColStart, randRowStart))
 
     // Set color of start to white
     board.getNode(randColStart, randRowStart).setStart();
+
+
 
     // var startNeighbors = board.getNeighbors(randColStart, randRowStart);
 
@@ -29,7 +36,7 @@ function setup() {
 
     
 
-    bfs.find();
+    // bfs.find();
 }
 
 // Continually looping function that draws things to the canvas

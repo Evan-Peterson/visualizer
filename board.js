@@ -24,14 +24,14 @@ function board() {
 
         this.board[randCol][randRow].setGoal(true);
 
-        // this.board[10][10].setGoal(true);
-        // this.board[11][10].setStart();
-        // this.board[9][10].setStart();
-        // this.board[10][11].setStart();
-        // this.board[10][9].setStart();
+        this.board[10][10].setGoal(true); // Middle
+        this.board[11][10].setVisited();  // East
+        this.board[9][10].setVisited();   // West
+        this.board[10][11].setVisited();  // South
+        this.board[10][9].setVisited();   // North
 
-        // console.log("cols: " + this.columns);
-        // console.log("rows: " + this.rows);
+        console.log("cols: " + this.columns);
+        console.log("rows: " + this.rows);
     };
     this.init();
 
@@ -43,7 +43,7 @@ function board() {
         }
     };
 
-    this.getNode = function(row, col) {
+    this.getNode = function(col, row) {
 
         if(row >= this.getRows() || col >= this.getCols() || row < 0 || col < 0) {
             return -1;
@@ -63,25 +63,25 @@ function board() {
     this.getNeighbors = function(x, y) {
         var neighbors = [];
 
-        var north = this.getNode(x - 1, y);
+        var north = this.getNode(x, y - 1);
 
         if(north != -1) {
             neighbors.push(north);
         }
 
-        var south = this.getNode(x + 1, y);
+        var south = this.getNode(x, y + 1);
 
         if(south != -1) {
             neighbors.push(south);
         }
 
-        var east = this.getNode(x, y - 1);
+        var east = this.getNode(x + 1, y);
 
         if(east != -1) {
             neighbors.push(east);
         }
 
-        var west = this.getNode(x, y + 1);
+        var west = this.getNode(x - 1, y);
 
         if(west != -1) {
             neighbors.push(west);
