@@ -10,7 +10,7 @@ function bfs(board, startCol, startRow) {
     board.getNode(startCol, startRow).setVisited(true);
     this.q.push(board.getNode(startCol, startRow));
 
-    this.step = function() {
+    this.step = function(nodes) {
         var v = this.q.shift();
 
         if(v.isTarget()) {
@@ -22,6 +22,9 @@ function bfs(board, startCol, startRow) {
         for(var i = 0;i < neighbors.length;i++) {
             if(!neighbors[i].isVisited()) {
                 neighbors[i].setVisited(true);
+
+                nodes.push(neighbors[i]);
+                
                 this.q.push(neighbors[i]);
             }
         }

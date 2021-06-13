@@ -41,6 +41,12 @@ function board() {
         }
     };
 
+    this.update = function(nodes) {
+        for(var i = 0;i < nodes.length;i++) {
+            nodes[i].display();
+        }
+    };
+
     // Returns the node at the col row given
     // Returns -1 if the given col row is out of bounds
     this.getNode = function(col, row) {

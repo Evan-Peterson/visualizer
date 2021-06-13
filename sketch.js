@@ -25,18 +25,23 @@ function setup() {
 
     search = true;
 
+    board.display();
+
     // bfs.find();
 }
 
 // Continually looping function that draws things to the canvas
 function draw() {
-    board.display();
+    
+    var nodes = [];
 
     console.log(frameRate());
 
     if(search) {
-        search = bfs.step();
+        search = bfs.step(nodes);
     }
+
+    board.update(nodes);
 }
   
 // If the window is resized, resize the canvas to the new window size
