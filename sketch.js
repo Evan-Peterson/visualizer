@@ -10,6 +10,7 @@ function setup() {
 
     createCanvas(windowWidth, windowHeight - 25);
 
+    frameRate(60);
 
     board = new board();
 
@@ -31,7 +32,7 @@ function setup() {
 function draw() {
     board.display();
 
-    console.log("loop");
+    console.log(frameRate());
 
     if(search) {
         search = bfs.step();
