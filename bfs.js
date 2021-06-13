@@ -23,8 +23,10 @@ function bfs(board, startCol, startRow) {
             if(!neighbors[i].isVisited()) {
                 neighbors[i].setVisited(true);
 
+                neighbors[i].setDepth(v.getDepth() + 1);
+
                 nodes.push(neighbors[i]);
-                
+
                 this.q.push(neighbors[i]);
             }
         }

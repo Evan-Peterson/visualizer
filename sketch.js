@@ -39,6 +39,8 @@ function draw() {
 
     if(search) {
         search = bfs.step(nodes);
+    } else {
+        board.backTrack(nodes);
     }
 
     board.update(nodes);

@@ -7,6 +7,9 @@ function board() {
     this.columns = Math.round(width/this.w);
     this.rows = Math.round(height/this.w);
 
+    this.goalCol;
+    this.goalRow;
+
     this.start;
 
     // Creates 2D array with columns as the outer array
@@ -25,10 +28,13 @@ function board() {
             }
         }
 
-        var randCol = Math.round(Math.random() * this.columns);
-        var randRow = Math.round(Math.random() * this.rows);
+        this.goalCol = Math.round(Math.random() * this.columns);
+        this.goalRow = Math.round(Math.random() * this.rows);
 
-        this.board[randCol][randRow].setGoal(true);
+        // this.goalCol = 50;
+        // this.goalRow = 50;
+
+        this.board[this.goalCol][this.goalRow].setGoal(true);
     };
     this.init();
 
@@ -99,5 +105,37 @@ function board() {
         }
 
         return neighbors;
+    };
+
+
+    this.backTrack = function(nodes) {
+
+        var curNode = this.getNode(this.goalCol, this.goalRow);
+
+        while(!curNode.isStart()) {
+
+            var neighbors = this.getNeighbors(curNode.getCol(), curNode.getRow());
+
+            var min = 9999;
+
+            for(var i = 0;i < neighbors.length;i++) {
+                if(neighbors[i].getDepth() < curNode.getDepth()) {
+                    min = i;
+                }
+            }
+
+            
+
+            if(min == 9999) {
+                return true;
+            }
+
+            if(!neighbors[min].isStart()) {
+                neighbors[min].setColor(250, 248, 132);
+            }
+            
+            nodes.push(neighbors[min]);
+            curNode = neighbors[min];
+        }
     };
 }

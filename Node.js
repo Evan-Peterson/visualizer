@@ -27,6 +27,9 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Width to of the node
     this.w = w;
 
+    // Depth of the node from the start
+    this.depth = 0;
+
     // True if the node is the goal node or not
     this.isGoal = false;
 
@@ -37,6 +40,9 @@ function Node(x, y, w, isGoal, visited, row, col) {
     this.display = function() {
 
         fill(this.r, this.g, this.b);
+
+        // Uncomment to show depth
+        // fill(10 * this.depth, 10 * this.depth, 10 * this.depth);
         
         rect(this.x, this.y, this.w, this.w);
     };
@@ -94,5 +100,15 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Returns this node's col in the board
     this.getCol = function() {
         return this.col;
+    };
+
+    // Returns the depth of the node
+    this.getDepth = function() {
+        return this.depth;
+    };
+
+    // Sets depth of the node
+    this.setDepth = function(depth) {
+        this.depth = depth;
     };
 }
