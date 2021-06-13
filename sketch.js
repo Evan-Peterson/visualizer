@@ -10,7 +10,7 @@ function setup() {
 
     createCanvas(windowWidth, windowHeight - 25);
 
-    frameRate(60);
+    frameRate(120);
 
     board = new board();
 
@@ -35,7 +35,7 @@ function draw() {
     
     var nodes = [];
 
-    console.log(frameRate());
+    // console.log(frameRate());
 
     if(search) {
         search = bfs.step(nodes);
