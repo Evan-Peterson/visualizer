@@ -6,8 +6,10 @@ function Node(x, y, w, isGoal, visited, row, col) {
     this.x = x;
     this.y = y;
 
+    // Row and column of the node
     this.row = row;
     this.col = col;
+
     // True if the node has been visited, false if not
     this.visited = visited;
 

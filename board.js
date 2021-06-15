@@ -107,34 +107,44 @@ function board() {
         return neighbors;
     };
 
-
+    // Backtracts from the goal to the start using node depth to find the 
+    // shortest path
     this.backTrack = function(nodes) {
 
+        // Set the first node to the goal
         var curNode = this.getNode(this.goalCol, this.goalRow);
 
+        // Loop while the current node is not the start
         while(!curNode.isStart()) {
 
+            // Get all the neighbors for the current node
             var neighbors = this.getNeighbors(curNode.getCol(), curNode.getRow());
 
+            // minimum depth node index
             var min = 9999;
 
+            // Loop through all the neighbors and find the one with the smallest depth
             for(var i = 0;i < neighbors.length;i++) {
+                // if the depth is lower than the min and is visited, set the min to current index
                 if(neighbors[i].getDepth() < curNode.getDepth() && neighbors[i].isVisited()) {
                     min = i;
                 }
             }
 
             
-
+            // if node smaller node depth was found, return
             if(min == 9999) {
                 return true;
             }
 
+            // Set the node in the path to yellow if it is not the start
             if(!neighbors[min].isStart()) {
                 neighbors[min].setColor(250, 248, 132);
             }
             
+            // push the node to the list of nodes to be updated
             nodes.push(neighbors[min]);
+            // Set the current node to the new smallest depth node
             curNode = neighbors[min];
         }
     };

@@ -10,6 +10,8 @@ function bfs(board, startCol, startRow) {
     board.getNode(startCol, startRow).setVisited(true);
     this.q.push(board.getNode(startCol, startRow));
 
+    // Single step in the BFS algorithm
+    // Used in the drawing loop to "animate" the search process
     this.step = function(nodes) {
         var v = this.q.shift();
 
