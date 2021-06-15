@@ -35,7 +35,10 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // True if the node is the goal node or not
     this.isGoal = false;
 
+    // True if the node has been visited or not
     this.visited = false;
+
+    this.wall = false;
 
     // Draws a rectangle at the nodes x y position and 
     // colors it according to whether it is the target or not
@@ -57,7 +60,7 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Sets the node isGoal to the given value
     this.setGoal = function(isGoal) {
         this.isGoal = isGoal;
-        this.setColor(66, 245, 138);
+        this.setColor(156, 227, 100);
     };
 
     // Returns true if visited, false otherwise
@@ -70,7 +73,7 @@ function Node(x, y, w, isGoal, visited, row, col) {
     this.setVisited = function(visited) {
         this.visited = visited;
         if(!this.start && !this.isGoal) {
-            this.setColor(105, 157, 240);
+            this.setColor(90, 169, 230);
         }
         
     };
@@ -81,10 +84,10 @@ function Node(x, y, w, isGoal, visited, row, col) {
     };
 
     // Sets this node to the start
-    // Changes the color to white
+    // Changes the color to red
     this.setStart = function() {
         this.start = true;
-        this.setColor(255, 255, 255);
+        this.setColor(255, 99, 146);
     };
 
     // Sets the color of this node with the given rgb values
@@ -112,5 +115,25 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Sets depth of the node
     this.setDepth = function(depth) {
         this.depth = depth;
+    };
+
+    // Getter for wall
+    this.isWall = function() {
+        return this.wall;
+    };
+
+    // Set wall to given value and set to white if true, else set to default grey
+    this.setWall = function(wall) {
+
+        if(!this.isGoal && !this.isStart) {
+            this.wall = wall;
+        }
+        
+        if(wall) {
+            this.setColor(255, 255, 255);
+        } else {
+            this.setColor(51, 51, 51);
+        }
+        
     };
 }

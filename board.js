@@ -82,25 +82,25 @@ function board() {
 
         var north = this.getNode(x, y - 1);
 
-        if(north != -1) {
+        if(north != -1 && !north.isWall()) {
             neighbors.push(north);
         }
 
         var south = this.getNode(x, y + 1);
 
-        if(south != -1) {
+        if(south != -1 && !south.isWall()) {
             neighbors.push(south);
         }
 
         var east = this.getNode(x + 1, y);
 
-        if(east != -1) {
+        if(east != -1 && !east.isWall()) {
             neighbors.push(east);
         }
 
         var west = this.getNode(x - 1, y);
 
-        if(west != -1) {
+        if(west != -1 && !west.isWall()) {
             neighbors.push(west);
         }
 
@@ -139,7 +139,7 @@ function board() {
 
             // Set the node in the path to yellow if it is not the start
             if(!neighbors[min].isStart()) {
-                neighbors[min].setColor(250, 248, 132);
+                neighbors[min].setColor(255, 228, 94);
             }
             
             // push the node to the list of nodes to be updated
