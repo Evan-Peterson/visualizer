@@ -1,7 +1,7 @@
 function board() {
 
     // Width of the cells
-    this.w = 8;
+    this.w = 16;
 
     // Amount of columns and rows based on width/height and width of cell
     this.columns = Math.round(width/this.w);
@@ -28,8 +28,8 @@ function board() {
             }
         }
 
-        this.goalCol = Math.round(Math.random() * this.columns);
-        this.goalRow = Math.round(Math.random() * this.rows);
+        this.goalCol = Math.round(Math.random() * (this.columns - 1));
+        this.goalRow = Math.round(Math.random() * (this.rows - 1));
 
         // this.goalCol = 50;
         // this.goalRow = 50;
@@ -119,7 +119,7 @@ function board() {
             var min = 9999;
 
             for(var i = 0;i < neighbors.length;i++) {
-                if(neighbors[i].getDepth() < curNode.getDepth()) {
+                if(neighbors[i].getDepth() < curNode.getDepth() && neighbors[i].isVisited()) {
                     min = i;
                 }
             }
