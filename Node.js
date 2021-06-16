@@ -125,11 +125,11 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Set wall to given value and set to white if true, else set to default grey
     this.setWall = function(wall) {
 
-        if(!this.isGoal && !this.isStart) {
+        if(!this.isGoal && !this.start) {
             this.wall = wall;
         }
         
-        if(wall) {
+        if(this.wall) {
             this.setColor(255, 255, 255);
         } else {
             this.setColor(51, 51, 51);

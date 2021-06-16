@@ -31,10 +31,18 @@ function board() {
         this.goalCol = Math.round(Math.random() * (this.columns - 1));
         this.goalRow = Math.round(Math.random() * (this.rows - 1));
 
-        // this.goalCol = 50;
-        // this.goalRow = 50;
+        // this.goalCol = 25;
+        // this.goalRow = 25;
 
         this.board[this.goalCol][this.goalRow].setGoal(true);
+
+        // this.board[30][27].setWall(true);
+        // this.board[30][26].setWall(true);
+        // this.board[30][25].setWall(true);
+        // this.board[30][24].setWall(true);
+        // this.board[30][23].setWall(true);
+
+        // console.log(this.board[30][25]);
     };
     this.init();
 
