@@ -2,6 +2,7 @@
 var board;
 var bfs;
 var search;
+var backtrack;
 
 
 // Initial canvas setup
@@ -24,6 +25,7 @@ function setup() {
     bfs = new bfs(board, randColStart, randRowStart);
 
     search = false;
+    backtrack = false;
 
     board.display();
 
@@ -43,8 +45,12 @@ function draw() {
 
     if(search) {
         search = bfs.step(nodes);
-    } else {
-        board.backTrack(nodes);
+
+        if(!search) {
+            console.log("backtrack");
+            backtrack = true;
+            board.backTrack(nodes);
+        }
     }
 
     board.update(nodes);
@@ -56,5 +62,16 @@ function windowResized() {
 }
 
 function visualzeButtonPressed() {
-    search = true;
+
+    if(!search && backtrack) {
+        console.log("reset");
+        board.reset();
+        board.display();
+
+        search = false;
+        backtrack = false;
+    } else {
+        search = true;
+    }
+    
 }

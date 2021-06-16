@@ -136,4 +136,16 @@ function Node(x, y, w, isGoal, visited, row, col) {
         }
         
     };
+
+    // Resets the node to the default values
+    this.reset = function() {
+        this.visited = false;
+        this.depth = 0;
+
+        // If it is not the goal or the start, set the color to grey
+        if(!this.isGoal && !this.start) {
+            this.setColor(51, 51, 51);
+        }
+        
+    };
 }

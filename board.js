@@ -55,6 +55,15 @@ function board() {
         }
     };
 
+    // Resets all the nodes in the board
+    this.reset = function() {
+        for(var i = 0;i < this.columns;i++) {
+            for(var j = 0;j < this.rows;j++) {
+                this.board[i][j].reset();
+            }
+        }
+    };
+
     this.update = function(nodes) {
         for(var i = 0;i < nodes.length;i++) {
             nodes[i].display();
