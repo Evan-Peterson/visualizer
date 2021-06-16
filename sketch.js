@@ -23,9 +23,13 @@ function setup() {
 
     bfs = new bfs(board, randColStart, randRowStart);
 
-    search = true;
+    search = false;
 
     board.display();
+
+    let visButtoon = select("#button");
+
+    visButtoon.mousePressed(visualzeButtonPressed)
 
     // bfs.find();
 }
@@ -49,4 +53,8 @@ function draw() {
 // If the window is resized, resize the canvas to the new window size
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+}
+
+function visualzeButtonPressed() {
+    search = true;
 }
