@@ -36,6 +36,8 @@ function board() {
 
         this.board[this.goalCol][this.goalRow].setGoal(true);
 
+        console.log(this.board[1][1]);
+
         // this.board[30][27].setWall(true);
         // this.board[30][26].setWall(true);
         // this.board[30][25].setWall(true);
@@ -68,6 +70,8 @@ function board() {
         for(var i = 0;i < nodes.length;i++) {
             nodes[i].display();
         }
+
+        return [];
     };
 
     // Returns the node at the col row given
@@ -79,6 +83,20 @@ function board() {
         }
 
         return this.board[col][row];
+    };
+
+    this.findNode = function(x, y) {
+
+        for(var i = 0;i < this.columns;i++) {
+            for(var j = 0;j < this.rows;j++) {
+                if((x >= this.board[i][j].getX() && x <= (this.board[i][j].getX() + this.w)) && 
+                (y >= this.board[i][j].getY() && y <= (this.board[i][j].getY() + this.w))) {
+                    return this.board[i][j];
+                }
+            }
+        }
+
+        return null;
     };
 
     // Returns number of columns

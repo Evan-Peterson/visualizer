@@ -102,6 +102,14 @@ function Node(x, y, w, isGoal, visited, row, col) {
         return this.row;
     };
 
+    this.getX = function() {
+        return this.x;
+    };
+
+    this.getY = function() {
+        return this.y;
+    };
+
     // Returns this node's col in the board
     this.getCol = function() {
         return this.col;

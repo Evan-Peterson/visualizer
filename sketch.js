@@ -3,6 +3,7 @@ var board;
 var bfs;
 var search;
 var backtrack;
+var nodes;
 
 
 // Initial canvas setup
@@ -14,6 +15,7 @@ function setup() {
     frameRate(120);
 
     board = new board();
+    nodes = [];
 
     // Generate random row and column for start node
     var randColStart = Math.round(Math.random() * (board.getCols() - 1));
@@ -39,7 +41,7 @@ function setup() {
 // Continually looping function that draws things to the canvas
 function draw() {
     
-    var nodes = [];
+    // nodes = [];
 
     // console.log(frameRate());
 
@@ -47,13 +49,13 @@ function draw() {
         search = bfs.step(nodes);
 
         if(!search) {
-            console.log("backtrack");
             backtrack = true;
             board.backTrack(nodes);
         }
     }
+    // console.log(nodes.length);
 
-    board.update(nodes);
+    nodes = board.update(nodes);
 }
   
 // If the window is resized, resize the canvas to the new window size
@@ -64,7 +66,6 @@ function windowResized() {
 function visualzeButtonPressed() {
 
     if(!search && backtrack) {
-        console.log("reset");
         board.reset();
         board.display();
 
@@ -74,4 +75,15 @@ function visualzeButtonPressed() {
         search = true;
     }
     
+}
+
+function doubleClicked(event) {
+    console.log(event.layerX);
+    var node = board.findNode(event.layerX, event.layerY);
+
+    if(node != null) {
+        console.log("in if");
+        node.setVisited(true);
+        nodes.push(node);
+    }
 }
