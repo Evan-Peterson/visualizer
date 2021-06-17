@@ -36,15 +36,7 @@ function board() {
 
         this.board[this.goalCol][this.goalRow].setGoal(true);
 
-        console.log(this.board[1][1]);
-
-        // this.board[30][27].setWall(true);
-        // this.board[30][26].setWall(true);
-        // this.board[30][25].setWall(true);
-        // this.board[30][24].setWall(true);
-        // this.board[30][23].setWall(true);
-
-        // console.log(this.board[30][25]);
+        // console.log(this.board[1][1]);
     };
     this.init();
 
@@ -85,6 +77,8 @@ function board() {
         return this.board[col][row];
     };
 
+    // Finds the node in the board that is within the given x and y
+    // Returns the node if found or null if not found
     this.findNode = function(x, y) {
 
         for(var i = 0;i < this.columns;i++) {

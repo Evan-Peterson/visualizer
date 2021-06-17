@@ -78,12 +78,21 @@ function visualzeButtonPressed() {
 }
 
 function doubleClicked(event) {
-    console.log(event.layerX);
     var node = board.findNode(event.layerX, event.layerY);
 
     if(node != null) {
-        console.log("in if");
         node.setVisited(true);
+        nodes.push(node);
+    }
+}
+
+
+function mouseDragged(event) {
+    
+    var node = board.findNode(event.layerX, event.layerY);
+
+    if(node != null) {
+        node.setWall(true);
         nodes.push(node);
     }
 }
