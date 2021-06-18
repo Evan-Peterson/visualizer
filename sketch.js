@@ -89,15 +89,22 @@ function doubleClicked(event) {
 
 function mouseDragged(event) {
     
+    // console.log(event);
     var node = board.findNode(event.layerX, event.layerY);
 
     if(node != null) {
 
-        if(node.isWall()) {
+        if(event.which == 3) {
             node.setWall(false);
-        } else {
+        } else if(event.which == 1) {
             node.setWall(true);
         }
+
+        // if(node.isWall()) {
+        //     node.setWall(false);
+        // } else {
+        //     node.setWall(true);
+        // }
         
         nodes.push(node);
     }
