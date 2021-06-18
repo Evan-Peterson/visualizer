@@ -92,7 +92,13 @@ function mouseDragged(event) {
     var node = board.findNode(event.layerX, event.layerY);
 
     if(node != null) {
-        node.setWall(true);
+
+        if(node.isWall()) {
+            node.setWall(false);
+        } else {
+            node.setWall(true);
+        }
+        
         nodes.push(node);
     }
 }
