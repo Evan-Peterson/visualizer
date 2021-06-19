@@ -85,9 +85,15 @@ function Node(x, y, w, isGoal, visited, row, col) {
 
     // Sets this node to the start
     // Changes the color to red
-    this.setStart = function() {
-        this.start = true;
-        this.setColor(255, 99, 146);
+    this.setStart = function(val) {
+        this.start = val;
+
+        if(this.start) {
+            this.setColor(255, 99, 146);
+        } else {
+            this.setColor(51, 51, 51);
+        }
+        
     };
 
     // Sets the color of this node with the given rgb values
