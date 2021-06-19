@@ -6,9 +6,13 @@ var backtrack;
 var nodes;
 
 var dragStart = false;
+var dragTarget = false;
 
 var startCol;
 var startRow;
+
+var goalCol;
+var goalRow;
 
 
 // Initial canvas setup
@@ -28,6 +32,13 @@ function setup() {
 
     // Set color of start to white
     board.getNode(startCol, startRow).setStart(true);
+
+    goalCol = Math.round(Math.random() * (board.getCols() - 1));
+    goalRow = Math.round(Math.random() * (board.getRows() - 1));
+
+    board.getNode(goalCol, goalRow).setGoal(true);
+
+    // console.log(board.getNode(goalCol, goalRow));
 
     bfs = new bfs(board, startCol, startRow);
 
@@ -55,7 +66,7 @@ function draw() {
 
         if(!search) {
             backtrack = true;
-            board.backTrack(nodes);
+            board.backTrack(nodes, goalCol, goalRow);
         }
     }
     // console.log(nodes.length);
@@ -100,20 +111,40 @@ function mouseDragged(event) {
     
     if(node != null) {
 
+        // If the user is dragging the start node
         if(dragStart) {
-            console.log("first if");
+            // Find the start node in the board
             var start = board.getNode(startCol, startRow);
+            
+            // Set the previous start to false and the new node to the start
             start.setStart(false);
-
             node.setStart(true);
 
+            // Update the start row and col
             startCol = node.getCol();
             startRow = node.getRow();
 
+            // Add both nodes to list to be updated
             nodes.push(start);
             nodes.push(node);
+        } else if(dragTarget) { // If the user is dragging the target
+
+            // Find the target
+            var target = board.getNode(goalCol, goalRow);
+
+            // Set previous target to false and new target to the current node
+            target.setGoal(false);
+            node.setGoal(true);
+
+            // Update the goal row and col
+            goalCol = node.getCol();
+            goalRow = node.getRow();
+
+            // Add both nodes to be updated
+            nodes.push(target);
+            nodes.push(node);
+            
         } else if(!node.isTarget() && !node.isStart()) { // Only add wall if it is not the start or target
-            console.log("second");
             // Delete wall if right clicking
             if(event.which == 3) {
                 node.setWall(false);
@@ -126,7 +157,8 @@ function mouseDragged(event) {
         } else {
             if(node.isStart()) {
                 dragStart = true;
-                console.log(event);
+            } else if(node.isTarget()) {
+                dragTarget = true;
             }
         }
     }
@@ -136,4 +168,5 @@ function mouseDragged(event) {
 // Used to know when the mouse has finished dragging
 function mouseReleased() {
     dragStart = false;
+    dragTarget = false;
 }

@@ -7,11 +7,6 @@ function board() {
     this.columns = Math.round(width/this.w);
     this.rows = Math.round(height/this.w);
 
-    this.goalCol;
-    this.goalRow;
-
-    this.start;
-
     // Creates 2D array with columns as the outer array
     // This mimics x y coordinate plane
     this.board = new Array(this.columns);
@@ -27,16 +22,6 @@ function board() {
                 this.board[i][j] = new Node(i*this.w, j*this.w, this.w, false, false, j, i);
             }
         }
-
-        this.goalCol = Math.round(Math.random() * (this.columns - 1));
-        this.goalRow = Math.round(Math.random() * (this.rows - 1));
-
-        // this.goalCol = 25;
-        // this.goalRow = 25;
-
-        this.board[this.goalCol][this.goalRow].setGoal(true);
-
-        // console.log(this.board[1][1]);
     };
     this.init();
 
@@ -104,6 +89,7 @@ function board() {
     };
 
 
+
     // Returns an array of cells directly adjacent to the given x and y
     // If the given x and y is at an edge, then it returns only the neighbors that exist
     this.getNeighbors = function(x, y) {
@@ -138,10 +124,10 @@ function board() {
 
     // Backtracts from the goal to the start using node depth to find the 
     // shortest path
-    this.backTrack = function(nodes) {
+    this.backTrack = function(nodes, col, row) {
 
         // Set the first node to the goal
-        var curNode = this.getNode(this.goalCol, this.goalRow);
+        var curNode = this.getNode(col, row);
 
         // Loop while the current node is not the start
         while(!curNode.isStart()) {
@@ -177,4 +163,5 @@ function board() {
             curNode = neighbors[min];
         }
     };
+
 }

@@ -60,7 +60,13 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Sets the node isGoal to the given value
     this.setGoal = function(isGoal) {
         this.isGoal = isGoal;
-        this.setColor(156, 227, 100);
+
+        if(this.isGoal) {
+            this.setColor(156, 227, 100);
+        } else {
+            this.setColor(51, 51, 51);
+        }
+        
     };
 
     // Returns true if visited, false otherwise
