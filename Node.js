@@ -40,6 +40,8 @@ function Node(x, y, w, isGoal, visited, row, col) {
 
     this.wall = false;
 
+    this.distance = Infinity;
+
     // Draws a rectangle at the nodes x y position and 
     // colors it according to whether it is the target or not
     this.display = function() {
@@ -140,6 +142,16 @@ function Node(x, y, w, isGoal, visited, row, col) {
     // Getter for wall
     this.isWall = function() {
         return this.wall;
+    };
+
+    // Returns the distance of the node to the target
+    this.getDistance = function() {
+        return this.distance;
+    };
+
+    // Sets the distance of the node to given value
+    this.setDistance = function(distance) {
+        this.distance = distance;
     };
 
     // Set wall to given value and set to white if true, else set to default grey

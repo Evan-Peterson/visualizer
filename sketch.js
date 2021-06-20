@@ -30,6 +30,7 @@ function setup() {
     startCol = Math.round(Math.random() * (board.getCols() - 1));
     startRow = Math.round(Math.random() * (board.getRows() - 1));
 
+
     // Set color of start to white
     board.getNode(startCol, startRow).setStart(true);
 
@@ -51,15 +52,10 @@ function setup() {
 
     visButtoon.mousePressed(visualzeButtonPressed)
 
-    // bfs.find();
 }
 
 // Continually looping function that draws things to the canvas
 function draw() {
-    
-    // nodes = [];
-
-    // console.log(frameRate());
 
     if(search) {
         search = bfs.step(nodes);
@@ -69,7 +65,7 @@ function draw() {
             board.backTrack(nodes, goalCol, goalRow);
         }
     }
-    // console.log(nodes.length);
+
 
     nodes = board.update(nodes);
 }
@@ -93,14 +89,9 @@ function visualzeButtonPressed() {
     
 }
 
-function doubleClicked(event) {
-    var node = board.findNode(event.layerX, event.layerY);
+// function search(alg) {
 
-    if(node != null) {
-        node.setVisited(true);
-        nodes.push(node);
-    }
-}
+// }
 
 // Gets called when the mouse is being clicked and dragged
 function mouseDragged(event) {
