@@ -154,6 +154,11 @@ function Node(x, y, w, isGoal, visited, row, col) {
         this.distance = distance;
     };
 
+    // Returns the Euclidean distance between this node and the given row col
+    this.findDistance = function(row, col) {
+        return Math.sqrt((this.row - row)*(this.row - row) + (this.col - col)*(this.col - col));
+    };
+
     // Set wall to given value and set to white if true, else set to default grey
     this.setWall = function(wall) {
 
@@ -168,6 +173,8 @@ function Node(x, y, w, isGoal, visited, row, col) {
         }
         
     };
+
+    
 
     // Resets the node to the default values
     this.reset = function() {

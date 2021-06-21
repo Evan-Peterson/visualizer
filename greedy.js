@@ -1,5 +1,5 @@
 
-function greedy(board, startCol, startRow) {
+function greedy(board, startCol, startRow, goalCol, goalRow) {
 
     this.q = [];
     board.getNode(startCol, startRow).setVisited(true);
@@ -19,6 +19,12 @@ function greedy(board, startCol, startRow) {
                 neighbors[i].setVisited(true);
 
                 neighbors.setDepth(v.getDepth() + 1);
+
+                // Get the distance to the goal node and set the distance
+                var dist = neighbors[i].findDistance(goalRow, goalCol);
+                neighbors[i].setDistance(dist);
+
+                
                 
             }
         }
