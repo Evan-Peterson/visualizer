@@ -15,7 +15,7 @@ function Queue() {
         this.heap.push(node);
 
         // Restore up to maintian heap property
-        this.restoreUp(heap.length - 1);
+        this.restoreDown(this.heap.length - 1);
     };
 
     // Removes an item from the queue
@@ -23,7 +23,7 @@ function Queue() {
 
         // Get the first element of the heap
         // Should be the highest priority
-        var result = heap.shift();
+        var result = this.heap.shift();
 
         if(this.heap.length != 0) {
             this.heap.unshift(this.heap.pop());
@@ -85,11 +85,25 @@ function Queue() {
         }
     };
 
-    // this.restoreUp = function() {
+    /**
+     * Restores the heap up from the bottom to maintain heap property
+     * Recursive
+     * @param {Int} key key to restore on
+     */
+    this.restoreUp = function(key) {
 
-    // };
+    };
 
+    /**
+     * Prints out the heap array for debug purposes
+     */
+    this.print = function() {
+        var output = "";
+        for(var i = 0;i < this.heap.length;i++) {
+            output += this.heap[i].getDistance() + ", ";
+        }
 
-
+        console.log(output);
+    };
 
 }

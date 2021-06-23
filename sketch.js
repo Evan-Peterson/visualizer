@@ -42,6 +42,7 @@ function setup() {
     // console.log(board.getNode(goalCol, goalRow));
 
     bfs = new bfs(board, startCol, startRow);
+    greedy = new greedy(board, startCol, startRow, goalCol, goalRow);
 
     search = false;
     backtrack = false;
@@ -50,7 +51,47 @@ function setup() {
 
     let visButtoon = select("#button");
 
-    visButtoon.mousePressed(visualzeButtonPressed)
+    visButtoon.mousePressed(visualzeButtonPressed);
+
+    // var q = new Queue();
+
+    // var n0 = new Node();
+    // n0.setDistance(1);
+
+    // var n1 = new Node();
+    // n1.setDistance(11);
+
+    // var n2 = new Node();
+    // n2.setDistance(2);
+
+    // var n3 = new Node();
+    // n3.setDistance(3);
+
+    // var n4 = new Node();
+    // n4.setDistance(10);
+
+    // var n5 = new Node();
+    // n5.setDistance(9);
+
+    
+
+    // q.enqueue(n0);
+    // q.enqueue(n1);
+    // q.enqueue(n2);
+    // q.enqueue(n3);
+    // q.enqueue(n4);
+    // q.enqueue(n5);
+
+    // q.print();
+
+    // q.dequeue();
+
+    // q.print();
+
+    // q.dequeue();
+
+    // q.print();
+
 
 }
 
@@ -58,7 +99,7 @@ function setup() {
 function draw() {
 
     if(search) {
-        search = bfs.step(nodes);
+        search = greedy.step(nodes);
 
         if(!search) {
             backtrack = true;
