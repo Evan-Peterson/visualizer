@@ -23,13 +23,20 @@ function Queue() {
 
         // Get the first element of the heap
         // Should be the highest priority
-        var result = this.heap.shift();
+        // var result = this.heap.shift();
 
-        if(this.heap.length != 0) {
-            this.heap.unshift(this.heap.pop());
+        // if(this.heap.length != 0) {
+        //     this.heap.unshift(this.heap.pop());
 
-            this.restoreDown(0);
-        }
+        //     this.restoreDown(0);
+        // }
+
+        var min = this.findMin();
+
+        var result = this.heap[min];
+
+        this.heap.splice(min, 1);
+
 
         return result;
     };
@@ -42,6 +49,18 @@ function Queue() {
 
     // };
 
+    this.findMin = function() {
+        var min = 0;
+
+        for(var i = 0;i < this.heap.length;i++) {
+            if(this.heap[i].getDistance() < this.heap[min].getDistance()) {
+                min = i;
+            }
+        }
+
+        return min;
+    };
+ 
     // Returns true if the heap is empty
     this.isEmpty = function() {
         return this.heap.length == 0;
