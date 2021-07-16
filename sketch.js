@@ -66,7 +66,14 @@ function setup() {
 function draw() {
 
     if(search) {
-        search = algo.step(nodes);
+        
+        if(algo == null) {
+            alert("Select an Algorithm");
+            search = false;
+        } else {
+            search = algo.step(nodes);
+        }
+        
 
         if(!search) {
             backtrack = true;
