@@ -14,8 +14,10 @@ function board() {
         this.board[i] = new Array(this.rows);
     }
 
-    // Initializes each cell of the board to a new Node object
-    // Also randomly selects a row and col for the goal
+    /**
+     * Initializes each cell of the board to a new Node object
+     * Also randomly selects a row and col for the goal
+     */
     this.init = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -25,7 +27,10 @@ function board() {
     };
     this.init();
 
-    // Displays the nodes in the board to the screen
+    /**
+     * Loops through all of the nodes and updates them
+     * Redraws every node even if they didnt change
+     */
     this.display = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -34,7 +39,9 @@ function board() {
         }
     };
 
-    // Resets all the nodes in the board
+    /**
+     * Resets all the nodes in the board to their default values
+     */
     this.reset = function() {
         for(var i = 0;i < this.columns;i++) {
             for(var j = 0;j < this.rows;j++) {
@@ -43,6 +50,11 @@ function board() {
         }
     };
 
+    /**
+     * Loops through given list of nodes and redraws them
+     * @param {ArrayList} nodes list of nodes to update
+     * @returns empty list
+     */
     this.update = function(nodes) {
         for(var i = 0;i < nodes.length;i++) {
             nodes[i].display();
@@ -51,8 +63,13 @@ function board() {
         return [];
     };
 
-    // Returns the node at the col row given
-    // Returns -1 if the given col row is out of bounds
+    /**
+     * Returns the node at the col row given
+     * Returns -1 if the given col row is out of bounds
+     * @param {Int} col column of node to find
+     * @param {Int} row row of node to find
+     * @returns Node 
+     */
     this.getNode = function(col, row) {
 
         if(row >= this.getRows() || col >= this.getCols() || row < 0 || col < 0) {
@@ -62,8 +79,13 @@ function board() {
         return this.board[col][row];
     };
 
-    // Finds the node in the board that is within the given x and y
-    // Returns the node if found or null if not found
+    /**
+     * Finds the node in the board that is within the given x and y
+     * Returns the node if found or null if not
+     * @param {Double} x given x value on the canvas
+     * @param {*} y given y value on the canvas
+     * @returns Node
+     */
     this.findNode = function(x, y) {
 
         for(var i = 0;i < this.columns;i++) {
@@ -78,20 +100,29 @@ function board() {
         return null;
     };
 
-    // Returns number of columns
+    /**
+     * Returns number of columns in board
+     * @returns Integer
+     */
     this.getCols = function() {
         return this.board.length;
     };
 
-    // Returns number of rows
+    /**
+     * Returns number of rows in board
+     * @returns Integer
+     */
     this.getRows = function() {
         return this.board[0].length;
     };
 
-
-
-    // Returns an array of cells directly adjacent to the given x and y
-    // If the given x and y is at an edge, then it returns only the neighbors that exist
+    /**
+     * Returns an array of cells directly adjacent to the given x and y
+     * If the given x and y is at an edge, then it returns only the neighbors that exist
+     * @param {Integer} x given column
+     * @param {Integer} y given row
+     * @returns Array of Nodes
+     */
     this.getNeighbors = function(x, y) {
         var neighbors = [];
 
@@ -122,8 +153,14 @@ function board() {
         return neighbors;
     };
 
-    // Backtracts from the goal to the start using node depth to find the 
-    // shortest path
+    /**
+     * Backtracts from the goal to the start using node depth to find the 
+     * shortest path
+     * @param {ArrayList} nodes list of nodes that need to be updated
+     * @param {Integer} col given column  
+     * @param {Integer} row given row
+     * @returns Boolean
+     */
     this.backTrack = function(nodes, col, row) {
 
         // Set the first node to the goal

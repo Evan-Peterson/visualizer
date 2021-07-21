@@ -10,8 +10,13 @@ function bfs(board, startCol, startRow) {
     board.getNode(startCol, startRow).setVisited(true);
     this.q.push(board.getNode(startCol, startRow));
 
-    // Single step in the BFS algorithm
-    // Used in the drawing loop to "animate" the search process
+    /**
+     * Single step in the BFS algorithm
+     * Used in the drawing loop to "animate" the search process
+     * Returns true if the target is not found and false if it is
+     * @param {ArrayList} nodes list of nodes that need to be updated
+     * @returns true or false
+     */
     this.step = function(nodes) {
         var v = this.q.shift();
 
@@ -36,8 +41,10 @@ function bfs(board, startCol, startRow) {
         return true;
     };
 
-
-    /// Uses Breadth First Search to find the goal
+    /**
+     * Uses Breadth First Search to find the goal
+     * @returns Node 
+     */
     this.find = function() {
         
         // Create a "queue" 

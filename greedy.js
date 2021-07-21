@@ -5,6 +5,11 @@ function greedy(board, startCol, startRow, goalCol, goalRow) {
     board.getNode(startCol, startRow).setVisited(true);
     this.q.enqueue(board.getNode(startCol, startRow));
 
+    /**
+     * Performs a single step in the greedy seach algorithm
+     * @param {ArrayList} nodes list of nodes that need to be updated
+     * @returns false if the target it found, true otherwise
+     */
     this.step = function(nodes) {
         var v = this.q.dequeue();
 
@@ -31,7 +36,6 @@ function greedy(board, startCol, startRow, goalCol, goalRow) {
             }
         }
 
-        // this.q.print();
         return true;
     };
 
