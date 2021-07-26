@@ -124,7 +124,7 @@ function mouseDragged(event) {
     var node = board.findNode(event.layerX, event.layerY);
 
     
-    if(node != null) {
+    if(node != null && !search) {
 
         // If the user is dragging the start node
         if(dragStart) {
