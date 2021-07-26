@@ -5,11 +5,8 @@ function bfs(board, startCol, startRow) {
     this.startCol = startCol;
     this.startRow = startRow;
 
-    // PRobably move this somewhere else
-    this.q = [];
-
-
     this.init = function() {
+        this.q = [];
         board.getNode(this.startCol, this.startRow).setVisited(true);
         this.q.push(board.getNode(this.startCol, this.startRow));
     };

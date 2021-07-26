@@ -1,11 +1,11 @@
 
 function greedy(board, startCol, startRow, goalCol, goalRow) {
 
-    this.q = new Queue();
     this.startCol = startCol;
     this.startRow = startRow;
 
     this.init = function() {
+        this.q = new Queue();
         board.getNode(this.startCol, this.startRow).setVisited(true);
         this.q.enqueue(board.getNode(this.startCol, this.startRow));
     };
