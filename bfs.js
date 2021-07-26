@@ -7,8 +7,12 @@ function bfs(board, startCol, startRow) {
 
     // PRobably move this somewhere else
     this.q = [];
-    board.getNode(startCol, startRow).setVisited(true);
-    this.q.push(board.getNode(startCol, startRow));
+
+
+    this.init = function() {
+        board.getNode(this.startCol, this.startRow).setVisited(true);
+        this.q.push(board.getNode(this.startCol, this.startRow));
+    };
 
     /**
      * Single step in the BFS algorithm
@@ -72,6 +76,11 @@ function bfs(board, startCol, startRow) {
                 }
             }
         }
+    };
+
+    this.updateStart = function(col, row) {
+        this.startCol = col;
+        this.startRow = row;
     };
     
 }

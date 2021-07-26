@@ -2,8 +2,15 @@
 function greedy(board, startCol, startRow, goalCol, goalRow) {
 
     this.q = new Queue();
-    board.getNode(startCol, startRow).setVisited(true);
-    this.q.enqueue(board.getNode(startCol, startRow));
+    this.startCol = startCol;
+    this.startRow = startRow;
+
+    this.init = function() {
+        board.getNode(this.startCol, this.startRow).setVisited(true);
+        this.q.enqueue(board.getNode(this.startCol, this.startRow));
+    };
+    
+
 
     /**
      * Performs a single step in the greedy seach algorithm
@@ -37,6 +44,11 @@ function greedy(board, startCol, startRow, goalCol, goalRow) {
         }
 
         return true;
+    };
+
+    this.updateStart = function(col, row) {
+        this.startCol = col;
+        this.startRow = row;
     };
 
 }

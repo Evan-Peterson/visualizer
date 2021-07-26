@@ -100,6 +100,7 @@ function visualzeButtonPressed() {
         backtrack = false;
     } else {
         search = true;
+        algo.init();
     }
     
 }
@@ -183,4 +184,8 @@ function mouseDragged(event) {
 function mouseReleased() {
     dragStart = false;
     dragTarget = false;
+
+    if(algo != null) {
+        algo.updateStart(startCol, startRow);
+    }
 }
