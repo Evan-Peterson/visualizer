@@ -52,12 +52,15 @@ function setup() {
 
     board.display();
 
-    let visButtoon = select("#button");
+    let visButton = select("#button");
+    let resetButton = select("#resetButton");
+
     algoSelector = select("#algo");
 
     algoSelector.changed(selectEvent);
 
-    visButtoon.mousePressed(visualzeButtonPressed);
+    resetButton.mousePressed(restButtonPressed);
+    visButton.mousePressed(visualzeButtonPressed);
 
 
 }
@@ -103,6 +106,16 @@ function visualzeButtonPressed() {
         algo.init();
     }
     
+}
+
+function restButtonPressed() {
+    if(!search && backtrack) {
+        board.reset();
+        board.display();
+
+        search = false;
+        backtrack = false;
+    }
 }
 
 function selectEvent() {
